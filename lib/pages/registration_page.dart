@@ -1,7 +1,7 @@
 //import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_login_ui/common/theme_helper.dart';
-import 'package:flutter_login_ui/pages/widgets/header_widget.dart';
+import 'package:adventure_travelers/common/theme_helper.dart';
+import 'package:adventure_travelers/pages/widgets/header_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -225,7 +225,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           children: [
                             GestureDetector(
                               child: FaIcon(
-                                FontAwesomeIcons.googlePlus,
+                                FontAwesomeIcons.instagram,
                                 size: 35,
                                 color: HexColor("#EC2D2F"),
                               ),
@@ -235,8 +235,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                     context: context,
                                     builder: (BuildContext context) {
                                       return ThemeHelper().alartDialog(
-                                          "Google Plus",
-                                          "You tap on GooglePlus social icon.",
+                                          "Instagram",
+                                          "You tap on Instagram social icon.",
                                           context);
                                     },
                                   );

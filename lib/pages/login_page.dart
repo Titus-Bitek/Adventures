@@ -1,7 +1,7 @@
 //import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_login_ui/common/theme_helper.dart';
+import 'package:adventure_travelers/common/theme_helper.dart';
 
 import 'forgot_password_page.dart';
 import 'profile_page.dart';
@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
             Container(
               height: _headerHeight,
               child: HeaderWidget(_headerHeight, true,
-                  Icons.login_rounded), //let's create a common header widget
+                  Icons.lock_sharp), //let's create a common header widget
             ),
             SafeArea(
               child: Container(
@@ -39,9 +39,12 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     children: [
                       Text(
-                        'Hello',
+                        'Welcome',
                         style: TextStyle(
-                            fontSize: 60, fontWeight: FontWeight.bold),
+                          fontSize: 60,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green,
+                        ),
                       ),
                       Text(
                         'Signin into your account',
@@ -56,6 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                                 child: TextField(
                                   decoration: ThemeHelper().textInputDecoration(
                                       'User Name', 'Enter your user name'),
+                                  style: TextStyle(color: Colors.red),
                                 ),
                                 decoration:
                                     ThemeHelper().inputBoxDecorationShaddow(),

@@ -1,9 +1,9 @@
 //import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_login_ui/pages/login_page.dart';
-import 'package:flutter_login_ui/pages/splash_screen.dart';
-import 'package:flutter_login_ui/pages/widgets/header_widget.dart';
+import 'package:adventure_travelers/pages/login_page.dart';
+import 'package:adventure_travelers/pages/splash_screen.dart';
+import 'package:adventure_travelers/pages/widgets/header_widget.dart';
 
 import 'forgot_password_page.dart';
 import 'forgot_password_verification_page.dart';
@@ -25,7 +25,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Profile Page",
+          "Profile ",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         elevation: 0.5,
@@ -108,7 +108,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Container(
                   alignment: Alignment.bottomLeft,
                   child: Text(
-                    "FlutterTutorial.Net",
+                    "Navigation",
                     style: TextStyle(
                         fontSize: 25,
                         color: Colors.white,
@@ -273,7 +273,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ],
                     ),
                     child: Icon(
-                      Icons.person,
+                      Icons.holiday_village_rounded,
                       size: 80,
                       color: Colors.grey.shade300,
                     ),
@@ -282,14 +282,14 @@ class _ProfilePageState extends State<ProfilePage> {
                     height: 20,
                   ),
                   Text(
-                    'Mr. Donald Trump',
+                    'Adeveture',
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   Text(
-                    'Former President',
+                    'Experience Adventure',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
@@ -302,9 +302,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         Container(
                           padding:
                               const EdgeInsets.only(left: 8.0, bottom: 4.0),
-                          alignment: Alignment.topLeft,
+                          alignment: Alignment.center,
                           child: Text(
-                            "User Information",
+                            "Adventure Info",
                             style: TextStyle(
                               color: Colors.black87,
                               fontWeight: FontWeight.w500,
@@ -314,45 +314,59 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                         ),
                         Card(
+                          elevation:
+                              4, // Add a shadow to the card to give it depth
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                10), // Round the corners of the card
+                          ),
                           child: Container(
-                            alignment: Alignment.topLeft,
                             padding: EdgeInsets.all(15),
                             child: Column(
                               children: <Widget>[
-                                Column(
-                                  children: <Widget>[
-                                    ...ListTile.divideTiles(
-                                      color: Colors.grey,
-                                      tiles: [
-                                        ListTile(
-                                          contentPadding: EdgeInsets.symmetric(
-                                              horizontal: 12, vertical: 4),
-                                          leading: Icon(Icons.my_location),
-                                          title: Text("Location"),
-                                          subtitle: Text("Makerere"),
-                                        ),
-                                        ListTile(
-                                          leading: Icon(Icons.email),
-                                          title: Text("Email"),
-                                          subtitle:
-                                              Text("travellers@gmail.com"),
-                                        ),
-                                        ListTile(
-                                          leading: Icon(Icons.phone),
-                                          title: Text("Phone"),
-                                          subtitle: Text("+256789991111"),
-                                        ),
-                                        ListTile(
-                                          leading: Icon(Icons.person),
-                                          title: Text(
-                                              "About adventure travellers"),
-                                          subtitle: Text(
-                                              "This is a section to know about adventure travellers."),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                )
+                                ListTile(
+                                  contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 12, vertical: 4),
+                                  leading: Icon(Icons.location_pin),
+                                  title: Text(
+                                    "Location",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  subtitle: Text("Uganda"),
+                                ),
+                                Divider(), // Add a divider line to separate the list items
+                                ListTile(
+                                  leading: Icon(Icons.email),
+                                  title: Text(
+                                    "Email",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  subtitle: Text("travellers@gmail.com"),
+                                ),
+                                Divider(),
+                                ListTile(
+                                  leading: Icon(Icons.phone),
+                                  title: Text(
+                                    "Phone",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  subtitle: Text("+256789991111"),
+                                ),
+                                Divider(),
+                                ListTile(
+                                  leading: Icon(Icons.menu_open),
+                                  title: Text(
+                                    "About adventure travellers",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  subtitle: Text(
+                                    "This is a section to know about adventure travellers.",
+                                  ),
+                                ),
                               ],
                             ),
                           ),
