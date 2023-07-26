@@ -48,7 +48,8 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       Text(
                         'Signin into your account',
-                        style: TextStyle(color: Colors.grey),
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(height: 30.0),
                       Form(
@@ -58,8 +59,8 @@ class _LoginPageState extends State<LoginPage> {
                               Container(
                                 child: TextField(
                                   decoration: ThemeHelper().textInputDecoration(
-                                      'User Name', 'Enter your user name'),
-                                  style: TextStyle(color: Colors.red),
+                                      'Username', 'Enter your user name'),
+                                  style: TextStyle(color: Colors.black26),
                                 ),
                                 decoration:
                                     ThemeHelper().inputBoxDecorationShaddow(),
@@ -70,6 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                                   obscureText: true,
                                   decoration: ThemeHelper().textInputDecoration(
                                       'Password', 'Enter your password'),
+                                  style: TextStyle(color: Colors.black),
                                 ),
                                 decoration:
                                     ThemeHelper().inputBoxDecorationShaddow(),
@@ -90,7 +92,9 @@ class _LoginPageState extends State<LoginPage> {
                                   child: Text(
                                     "Forgot your password?",
                                     style: TextStyle(
-                                      color: Colors.grey,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      //color: Colors.black,
                                     ),
                                   ),
                                 ),
