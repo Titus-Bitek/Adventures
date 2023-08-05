@@ -1,12 +1,12 @@
 //import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:adventure_travelers/common/theme_helper.dart';
-
+import 'package:helloworld/theme_helper.dart';
+import 'package:helloworld/homepage.dart';
 import 'forgot_password_page.dart';
 import 'profile_page.dart';
 import 'registration_page.dart';
-import 'widgets/header_widget.dart';
+import 'header_widget.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -117,11 +117,10 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                   onPressed: () {
                                     //After successful login we will redirect to profile page. Let's create profile page now
-                                    Navigator.pushReplacement(
+                                    Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                ProfilePage()));
+                                            builder: (context) => MyApp()));
                                   },
                                 ),
                               ),

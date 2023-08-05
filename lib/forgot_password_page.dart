@@ -1,11 +1,11 @@
 //import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:adventure_travelers/common/theme_helper.dart';
+import 'package:helloworld/theme_helper.dart';
 
 import 'forgot_password_verification_page.dart';
 import 'login_page.dart';
-import 'widgets/header_widget.dart';
+import 'header_widget.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({Key? key}) : super(key: key);

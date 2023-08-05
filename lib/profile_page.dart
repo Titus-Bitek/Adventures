@@ -1,9 +1,9 @@
 //import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:adventure_travelers/pages/login_page.dart';
-import 'package:adventure_travelers/pages/splash_screen.dart';
-import 'package:adventure_travelers/pages/widgets/header_widget.dart';
+import 'package:helloworld/login_page.dart';
+import 'package:helloworld/splash_screen.dart';
+import 'package:helloworld/header_widget.dart';
 
 import 'forgot_password_page.dart';
 import 'forgot_password_verification_page.dart';
@@ -320,6 +320,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             borderRadius: BorderRadius.circular(
                                 10), // Round the corners of the card
                           ),
+                          color: Colors.blue,
                           child: Container(
                             padding: EdgeInsets.all(15),
                             child: Column(

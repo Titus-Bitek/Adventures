@@ -1,7 +1,7 @@
 //import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:adventure_travelers/common/theme_helper.dart';
-import 'package:adventure_travelers/pages/widgets/header_widget.dart';
+import 'package:helloworld/theme_helper.dart';
+import 'package:helloworld/header_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
 
