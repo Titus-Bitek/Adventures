@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:helloworld/homepage.dart';
+import 'package:helloworld/login_page.dart';
 
 class IntroPage extends StatefulWidget {
   @override
@@ -64,10 +65,10 @@ class _IntroPageState extends State<IntroPage> {
                             child: ElevatedButton(
                               onPressed: () {
                                 //Get.off(FindAdventure());
-                                Navigator.pushReplacement(
+                                Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => HomePage()),
+                                      builder: (context) => LoginPage()),
                                 );
                               },
                               // style: ElevatedButton.styleFrom(

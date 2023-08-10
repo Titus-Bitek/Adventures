@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      home: LoginPage(),
+      home: IntroPage(),
       routes: {
         '/trailDetails': (context) => TrailDetailsScreen(
               trailName: 'Create Trail',
@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
             ),
         '/groupHikingExpedition': (context) =>
             GroupHikingExpeditionPlanningScreen(
-              trailName: 'Create Trail for Group',
+              trailName: 'Choose Trail for Group',
               dateTime: DateTime.now(),
               maxParticipants: 10,
             ),

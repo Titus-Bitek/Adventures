@@ -54,36 +54,36 @@ class FamilyFriendlyTrailSelectionScreen extends StatelessWidget {
             },
           ),
           SizedBox(height: 16),
-          BadgeIconButton(
-            icon: Icon(Icons.explore),
-            text: 'Explore',
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      ExplorePage(), // Navigate to ExplorePage
-                ),
-              );
-              // Handle the explore button press.
-              // Add your explore logic here.
-            },
-          ),
-          SizedBox(height: 16),
-          BadgeIconButton(
-            icon: Icon(Icons.camera_alt),
-            text: 'Photography',
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PhotographyPage(),
-                ),
-              );
-              // Handle the photography button press.
-              // Add your photography logic here.
-            },
-          ),
+          // BadgeIconButton(
+          //   icon: Icon(Icons.explore),
+          //   text: 'Explore',
+          //   onPressed: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(
+          //         builder: (context) =>
+          //             ExplorePage(), // Navigate to ExplorePage
+          //       ),
+          //     );
+          //     // Handle the explore button press.
+          //     // Add your explore logic here.
+          //   },
+          // ),
+          // SizedBox(height: 16),
+          // BadgeIconButton(
+          //   icon: Icon(Icons.camera_alt),
+          //   text: 'Photography',
+          //   onPressed: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(
+          //         builder: (context) => PhotographyPage(),
+          //       ),
+          //     );
+          //     // Handle the photography button press.
+          //     // Add your photography logic here.
+          //   },
+          // ),
         ],
       ),
     );

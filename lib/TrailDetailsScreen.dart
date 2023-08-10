@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class TrailDetailsScreen extends StatelessWidget {
   final String trailName;
@@ -42,12 +43,6 @@ class TrailDetailsScreen extends StatelessWidget {
                 'Trail Photos:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              // Image.asset('Assets/6.jpg'),
-              // Image.asset('Assets/1.jpg'),
-              // Image.asset('Assets/3.jpg'),
-              // Image.asset('Assets/4.jpg'),
-              // Image.asset('Assets/5.jpg'),
-              // Image.asset('Assets/7.jpg'),
               SizedBox(height: 8),
               GridView.builder(
                 shrinkWrap: true,
@@ -59,7 +54,11 @@ class TrailDetailsScreen extends StatelessWidget {
                 ),
                 itemCount: trailPhotos.length,
                 itemBuilder: (context, index) {
-                  return Image.asset(trailPhotos[index]);
+                  return CachedNetworkImage(
+                    imageUrl: trailPhotos[index],
+                    placeholder: (context, url) => CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                  );
                 },
               ),
             ],
