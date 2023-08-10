@@ -4,6 +4,10 @@ import 'package:helloworld/intropage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:helloworld/login_page.dart';
 // import 'package:firebase_options.dart';
+import 'package:helloworld/homepage.dart';
+import 'package:helloworld/TrailDetailsScreen.dart';
+import 'package:helloworld/FamilyFriendlyTrailSelectionScreen.dart';
+import 'package:helloworld/GroupHikingExpeditionPlanningScreen.dart';
 
 void main() {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -21,12 +25,42 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Hiking Adventures',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal,
       ),
       home: LoginPage(),
+      routes: {
+        '/trailDetails': (context) => TrailDetailsScreen(
+              trailName: 'Create Trail',
+              difficultyLevel: 'Moderate',
+              distance: 10.5,
+              elevationProfile: 'Some ups and downs',
+              trailPhotos: [
+                'Assets/1.jpg',
+                'Assets/1.jpg',
+                'Assets/1.jpg',
+                'Assets/1.jpg',
+                'Assets/1.jpg',
+                'Assets/1.jpg',
+                'Assets/1.jpg',
+                'Assets/1.jpg',
+              ],
+            ),
+        '/familyFriendlyTrails': (context) =>
+            FamilyFriendlyTrailSelectionScreen(
+              familyFriendlyTrails: dummyFamilyFriendlyTrails,
+            ),
+        '/groupHikingExpedition': (context) =>
+            GroupHikingExpeditionPlanningScreen(
+              trailName: 'Create Trail for Group',
+              dateTime: DateTime.now(),
+              maxParticipants: 10,
+            ),
+        '/photography': (context) => FamilyFriendlyTrailSelectionScreen(
+              familyFriendlyTrails: dummyPhotography,
+            ),
+      },
     );
   }
 }

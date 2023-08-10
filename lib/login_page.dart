@@ -1,6 +1,7 @@
 //import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:helloworld/intropage.dart';
 import 'package:helloworld/theme_helper.dart';
 import 'package:helloworld/homepage.dart';
 import 'forgot_password_page.dart';
@@ -120,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => MyApp()));
+                                            builder: (context) => IntroPage()));
                                   },
                                 ),
                               ),
