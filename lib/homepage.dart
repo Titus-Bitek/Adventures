@@ -1,56 +1,8 @@
 import 'package:flutter/material.dart';
-
-import 'package:helloworld/TrailDetailsScreen.dart';
-import 'package:helloworld/FamilyFriendlyTrailSelectionScreen.dart';
-import 'package:helloworld/GroupHikingExpeditionPlanningScreen.dart';
-
-// void main() {
-//   runApp(MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Hiking Adventures',
-//       theme: ThemeData(
-//         primarySwatch: Colors.teal,
-//       ),
-//       home: HomePage(),
-//       routes: {
-//         '/trailDetails': (context) => TrailDetailsScreen(
-//               trailName: 'Example Trail',
-//               difficultyLevel: 'Moderate',
-//               distance: 10.5,
-//               elevationProfile: 'Some ups and downs',
-//               trailPhotos: [
-//                 'Assets/1.jpg',
-//                 'Assets/1.jpg',
-//                 'Assets/1.jpg',
-//                 'Assets/1.jpg',
-//                 'Assets/1.jpg',
-//                 'Assets/1.jpg',
-//                 'Assets/1.jpg',
-//                 'Assets/1.jpg',
-//               ],
-//             ),
-//         '/familyFriendlyTrails': (context) =>
-//             FamilyFriendlyTrailSelectionScreen(
-//               familyFriendlyTrails: dummyFamilyFriendlyTrails,
-//             ),
-//         '/groupHikingExpedition': (context) =>
-//             GroupHikingExpeditionPlanningScreen(
-//               trailName: 'Example Trail for Group',
-//               dateTime: DateTime.now(),
-//               maxParticipants: 10,
-//             ),
-//         '/photography': (context) => FamilyFriendlyTrailSelectionScreen(
-//               familyFriendlyTrails: dummyPhotography,
-//             ),
-//       },
-//     );
-//   }
-// }
+import 'DetailsScreen.dart';
+// import 'package:helloworld/TrailDetailsScreen.dart';
+// import 'package:helloworld/FamilyFriendlyTrailSelectionScreen.dart';
+// import 'package:helloworld/GroupHikingExpeditionPlanningScreen.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -63,7 +15,8 @@ class _HomePageState extends State<HomePage> {
   List<Map<String, dynamic>> filteredAccommodationPlaces =
       dummyAccommodationPlaces;
   List<Map<String, dynamic>> filteredHikingPlaces = dummyHikingPlaces;
-
+  bool showFirstImage = true;
+  bool isAdmin = true;
   @override
   void dispose() {
     _searchController.dispose();
@@ -74,18 +27,29 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: Text(
-            'Hiking Adventures',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24.0,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Arial',
-              // You can add more properties like letterSpacing, fontStyle, etc.
-            ),
+        // title: const Center(
+        title: Text(
+          'Hiking Adventures',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 24.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Arial',
+            // You can add more properties like letterSpacing, fontStyle, etc.
           ),
         ),
+        // ),
+        actions: [
+          // Add admin panel button
+          if (isAdmin)
+            IconButton(
+              icon: const Icon(Icons.admin_panel_settings),
+              onPressed: () {
+                // Navigate to admin panel
+                Navigator.pushNamed(context, '/adminPanel');
+              },
+            ),
+        ],
       ),
       body: Column(
         children: [
@@ -93,6 +57,14 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(16.0),
             child: TextField(
               controller: _searchController,
+              decoration: InputDecoration(
+                hintText: 'Search trails...',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.grey),
+                ),
+                contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
+              ),
               onChanged: (value) {
                 setState(() {
                   filteredTrendingPlaces = dummyTrendingPlaces
@@ -114,7 +86,6 @@ class _HomePageState extends State<HomePage> {
                       .toList();
                 });
               },
-              // ... rest of the TextField code ...
             ),
           ),
           Expanded(
@@ -139,13 +110,28 @@ class _HomePageState extends State<HomePage> {
                           scrollDirection: Axis.horizontal,
                           itemCount: filteredTrendingPlaces.length,
                           itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: TrendingPlaceCard(
-                                placeName: filteredTrendingPlaces[index]
-                                    ['name'],
-                                imageUrl: filteredTrendingPlaces[index]
-                                    ['image'],
+                            return GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  // Toggle the condition to switch between images
+                                  filteredTrendingPlaces[index]
+                                          ['showFirstImage'] =
+                                      !filteredTrendingPlaces[index]
+                                          ['showFirstImage'];
+                                  // showFirstImage = !showFirstImage;
+                                });
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: TrendingPlaceCard(
+                                  placeName: filteredTrendingPlaces[index]
+                                      ['name'],
+                                  imageUrl: filteredTrendingPlaces[index]
+                                          ['showFirstImage']
+                                      ? filteredTrendingPlaces[index]['image']
+                                      : filteredTrendingPlaces[index]
+                                          ['imageUrl'],
+                                ),
                               ),
                             );
                           },
@@ -173,13 +159,29 @@ class _HomePageState extends State<HomePage> {
                           scrollDirection: Axis.horizontal,
                           itemCount: filteredAccommodationPlaces.length,
                           itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: AccommodationPlaceCard(
-                                placeName: filteredAccommodationPlaces[index]
-                                    ['name'],
-                                imageUrl: filteredAccommodationPlaces[index]
-                                    ['image'],
+                            return GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  // Toggle the condition to switch between images
+                                  filteredAccommodationPlaces[index]
+                                          ['showFirstImage'] =
+                                      !filteredAccommodationPlaces[index]
+                                          ['showFirstImage'];
+                                  // showFirstImage = !showFirstImage;
+                                });
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: AccommodationPlaceCard(
+                                  placeName: filteredAccommodationPlaces[index]
+                                      ['name'],
+                                  imageUrl: filteredAccommodationPlaces[index]
+                                          ['showFirstImage']
+                                      ? filteredAccommodationPlaces[index]
+                                          ['image']
+                                      : filteredAccommodationPlaces[index]
+                                          ['imageUrl'],
+                                ),
                               ),
                             );
                           },
@@ -207,11 +209,29 @@ class _HomePageState extends State<HomePage> {
                           scrollDirection: Axis.horizontal,
                           itemCount: filteredHikingPlaces.length,
                           itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: HikingPlaceCard(
-                                placeName: filteredHikingPlaces[index]['name'],
-                                imageUrl: filteredHikingPlaces[index]['image'],
+                            return GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  // Toggle the condition to switch between images
+                                  filteredHikingPlaces[index]
+                                          ['showFirstImage'] =
+                                      !filteredHikingPlaces[index]
+                                          ['showFirstImage'];
+                                  // showFirstImage = !showFirstImage;
+                                });
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: HikingPlaceCard(
+                                  placeName: filteredHikingPlaces[index]
+                                      ['name'],
+                                  imageUrl: filteredHikingPlaces[index]
+                                          ['showFirstImage']
+                                      ? filteredHikingPlaces[index]['image']
+                                      : filteredHikingPlaces[index]['imageUrl'],
+                                  description: filteredHikingPlaces[index]
+                                      ['description'],
+                                ),
                               ),
                             );
                           },
@@ -223,78 +243,6 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          // Expanded(
-          //   child: CustomScrollView(
-          //     slivers: [
-          //       SliverList(
-          //         delegate: SliverChildListDelegate(
-          //           [
-          //             Padding(
-          //               padding: const EdgeInsets.all(16.0),
-          //               child: Text(
-          //                 'Trending Places',
-          //                 style: TextStyle(
-          //                   fontSize: 24,
-          //                   fontWeight: FontWeight.bold,
-          //                 ),
-          //               ),
-          //             ),
-          //             Container(
-          //               height: 200, // Adjust the height as needed
-          //               child: ListView.builder(
-          //                 scrollDirection: Axis.horizontal,
-          //                 itemCount: dummyAccommodationPlaces.length,
-          //                 itemBuilder: (context, index) {
-          //                   return Padding(
-          //                     padding: const EdgeInsets.all(8.0),
-          //                     child: AccommodationPlaceCard(
-          //                       placeName: dummyAccommodationPlaces[index]
-          //                           ['name'],
-          //                       imageUrl: dummyAccommodationPlaces[index]
-          //                           ['image'],
-          //                     ),
-          //                   );
-          //                 },
-          //               ),
-          //             ),
-          //           ],
-          //         ),
-          //       ),
-          //       // SliverList(
-          //       //   delegate: SliverChildListDelegate(
-          //       //     [
-          //       //       Padding(
-          //       //         padding: const EdgeInsets.all(16.0),
-          //       //         child: Text(
-          //       //           'Nearest Accommodation',
-          //       //           style: TextStyle(
-          //       //             fontSize: 24,
-          //       //             fontWeight: FontWeight.bold,
-          //       //           ),
-          //       //         ),
-          //       //       ),
-          //       //       Container(
-          //       //         height: 200, // Adjust the height as needed
-          //       //         child: ListView.builder(
-          //       //           scrollDirection: Axis.horizontal,
-          //       //           itemCount: dummyTrendingPlaces.length,
-          //       //           itemBuilder: (context, index) {
-          //       //             return Padding(
-          //       //               padding: const EdgeInsets.all(8.0),
-          //       //               child: TrendingPlaceCard(
-          //       //                 placeName: dummyTrendingPlaces[index]['name'],
-          //       //                 imageUrl: dummyTrendingPlaces[index]['image'],
-          //       //               ),
-          //       //             );
-          //       //           },
-          //       //         ),
-          //       //       ),
-          //       //     ],
-          //       //   ),
-          //       // ),
-          //     ],
-          //   ),
-          // ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -313,6 +261,14 @@ class _HomePageState extends State<HomePage> {
             case 3:
               Navigator.pushNamed(context, '/trailDetails');
               break;
+            case 4:
+              Navigator.pushNamed(context, '/adventure');
+              break;
+            case 5:
+              // Handle the menu icon tap to open the additional routes.
+              // For example:
+              Navigator.pushNamed(context, '/moreRoutes');
+              break;
           }
         },
         items: [
@@ -322,15 +278,24 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.family_restroom),
-            label: 'Family-Friendly Trails',
+            label: 'Family',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.group),
-            label: 'Group Expedition',
+            label: 'Group',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.explore),
-            label: 'Trail Details',
+            icon: Icon(Icons.details),
+            label: 'find',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.location_on_sharp),
+            label: 'Details',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.menu), // Add your desired menu icon here
+            label:
+                'More', // You can set the label to 'More' or any other appropriate text
           ),
         ],
         selectedItemColor: Colors.blue, // Color for the selected item
@@ -348,7 +313,19 @@ class TrendingPlaceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return
+        // GestureDetector(
+        // onTap: () {
+        //   // Navigate to the details screen when the image is clicked
+        //   Navigator.push(
+        //     context,
+        //     MaterialPageRoute(
+        //       builder: (context) =>
+        //           DetailsScreen(placeName: placeName, imageUrl: imageUrl),
+        //     ),
+        //   );
+        // },
+        Column(
       children: [
         Container(
           width: 150,
@@ -371,6 +348,7 @@ class TrendingPlaceCard extends StatelessWidget {
         ),
       ],
     );
+    // );
   }
 }
 
@@ -378,26 +356,39 @@ final List<Map<String, dynamic>> dummyTrendingPlaces = [
   {
     'name': 'Scenic Mountain',
     'image': 'Assets/2.jpg',
+    'imageUrl':
+        'https://www.gorilla-tracking.com/wp-content/uploads/2019/04/uganda-gorilla-trekking-tours-safaris-1-scaled.jpg',
+    'showFirstImage': true,
   },
   {
     'name': 'Forest Trail',
     'image': 'Assets/3.jpg',
+    'imageUrl': '',
+    'showFirstImage': true,
   },
   {
     'name': 'Treking Trail',
     'image': 'Assets/6.jpg',
+    'imageUrl': '',
+    'showFirstImage': true,
   },
   {
     'name': 'Zoo Trail',
     'image': 'Assets/4.jpg',
+    'imageUrl': '',
+    'showFirstImage': true,
   },
   {
     'name': 'Scenic Mountain',
     'image': 'Assets/1.jpg',
+    'imageUrl': '',
+    'showFirstImage': true,
   },
   {
     'name': 'Group Trail',
     'image': 'Assets/7.jpg',
+    'imageUrl': '',
+    'showFirstImage': true,
   },
   // Add more trending places here
 ];
@@ -410,7 +401,19 @@ class AccommodationPlaceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return
+        // GestureDetector(
+        // onTap: () {
+        //   // Navigate to the details screen when the image is clicked
+        //   Navigator.push(
+        //     context,
+        //     MaterialPageRoute(
+        //       builder: (context) =>
+        //           DetailsScreen(placeName: placeName, imageUrl: imageUrl),
+        //     ),
+        //   );
+        // },
+        Column(
       children: [
         Container(
           width: 150,
@@ -433,6 +436,7 @@ class AccommodationPlaceCard extends StatelessWidget {
         ),
       ],
     );
+    // );
   }
 }
 
@@ -440,26 +444,38 @@ final List<Map<String, dynamic>> dummyAccommodationPlaces = [
   {
     'name': 'Safaris',
     'image': 'Assets/rest2.jpg',
+    'imageUrl': '',
+    'showFirstImage': true,
   },
   {
     'name': 'Nile Resort',
     'image': 'Assets/rest.jpg',
+    'imageUrl': '',
+    'showFirstImage': true,
   },
   {
     'name': 'Telegraph Travel',
     'image': 'Assets/rest6.jpg',
+    'imageUrl': '',
+    'showFirstImage': true,
   },
   {
     'name': 'Outdoor Trail',
     'image': 'Assets/rest4.jpg',
+    'imageUrl': '',
+    'showFirstImage': true,
   },
   {
     'name': 'Scenic Beauty',
     'image': 'Assets/rest1.jpg',
+    'imageUrl': '',
+    'showFirstImage': true,
   },
   {
     'name': 'Group Trail',
     'image': 'Assets/rest7.jpg',
+    'imageUrl': '',
+    'showFirstImage': true,
   },
   // Add more trending places here
 ];
@@ -467,12 +483,68 @@ final List<Map<String, dynamic>> dummyAccommodationPlaces = [
 class HikingPlaceCard extends StatelessWidget {
   final String placeName;
   final String imageUrl;
+  final String description;
+  HikingPlaceCard(
+      {required this.placeName,
+      required this.imageUrl,
+      required this.description});
 
-  HikingPlaceCard({required this.placeName, required this.imageUrl});
+  // void _showTrailDetails(BuildContext context) {
+  //   showModalBottomSheet(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return Container(
+  //         padding: EdgeInsets.all(16),
+  //         child: Column(
+  //           crossAxisAlignment: CrossAxisAlignment.start,
+  //           children: [
+  //             Text(
+  //               placeName,
+  //               style: TextStyle(
+  //                 fontSize: 24,
+  //                 fontWeight: FontWeight.bold,
+  //               ),
+  //             ),
+  //             SizedBox(height: 16),
+  //             Image.asset(imageUrl),
+  //             SizedBox(height: 16),
+  //             Text(
+  //               'Description:',
+  //               style: TextStyle(
+  //                 fontSize: 18,
+  //                 fontWeight: FontWeight.bold,
+  //               ),
+  //             ),
+  //             SizedBox(height: 8),
+  //             Text(
+  //               description,
+  //               style: TextStyle(
+  //                 fontSize: 16,
+  //               ),
+  //             ),
+  //           ],
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return
+        // GestureDetector(
+        // onTap: () {
+        //   // _showTrailDetails(context); // Show trail details on tap
+        //   // Navigate to the details screen when the image is clicked
+        //   Navigator.push(
+        //     context,
+        //     MaterialPageRoute(
+        //       builder: (context) =>
+        //           DetailsScreen(placeName: placeName, imageUrl: imageUrl),
+        //     ),
+        //   );
+        // },
+        Column(
       children: [
         Container(
           width: 150,
@@ -493,35 +565,55 @@ class HikingPlaceCard extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+        // SizedBox(height: 8),
+        // ElevatedButton(
+        //   onPressed: () {
+        //     _showTrailDetails(context); // Show trail details on button click
+        //   },
+        //   child: Text('See Details'),
+        // ),
       ],
     );
+    // );
   }
 }
 
 final List<Map<String, dynamic>> dummyHikingPlaces = [
   {
     'name': 'Safaris',
-    'image': 'Assets/rest2.jpg',
+    'image': 'Assets/e.jpg',
+    'imageUrl': '',
+    'showFirstImage': true,
   },
   {
     'name': 'Nile Resort',
     'image': 'Assets/z.jpg',
+    'imageUrl': '',
+    'showFirstImage': true,
   },
   {
     'name': 'Telegraph Travel',
-    'image': 'Assets/g.jpg',
+    'image': 'Assets/m.jpg',
+    'imageUrl': '',
+    'showFirstImage': true,
   },
   {
     'name': 'Outdoor Trail',
     'image': 'Assets/t.jpg',
+    'imageUrl': '',
+    'showFirstImage': true,
   },
   {
     'name': 'Scenic Beauty',
     'image': 'Assets/r.jpg',
+    'imageUrl': '',
+    'showFirstImage': true,
   },
   {
     'name': 'Group Trail',
-    'image': 'Assets/rest7.jpg',
+    'image': 'Assets/g.jpg',
+    'imageUrl': '',
+    'showFirstImage': true,
   },
   // Add more trending places here
 ];

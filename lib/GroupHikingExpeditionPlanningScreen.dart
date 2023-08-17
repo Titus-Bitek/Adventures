@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter_material_pickers/flutter_material_pickers.dart';
+import 'package:share/share.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class GroupHikingExpeditionPlanningScreen extends StatefulWidget {
   final String trailName;
@@ -76,6 +78,7 @@ class _GroupHikingExpeditionPlanningScreenState
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     HikingEvent newEvent = HikingEvent(
+                      id: nextEventId,
                       trailName: widget.trailName,
                       dateTime: widget.dateTime,
                       maxParticipants: widget.maxParticipants,
@@ -111,6 +114,37 @@ class _GroupHikingExpeditionPlanningScreenState
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           IconButton(
+                            icon: Icon(Icons.share),
+                            onPressed: () {
+                              showModalBottomSheet(
+                                context: context,
+                                builder: (context) {
+                                  return Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      ListTile(
+                                        leading: Icon(Icons.text_snippet),
+                                        title: Text('Share Hiking Event'),
+                                        onTap: () {
+                                          Navigator.pop(context);
+                                          _shareHikingEvent(hikingEvent);
+                                        },
+                                      ),
+                                      ListTile(
+                                        leading: Icon(Icons.link),
+                                        title: Text('Share Link'),
+                                        onTap: () {
+                                          Navigator.pop(context);
+                                          _shareLink(hikingEvent);
+                                        },
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                          IconButton(
                             icon: Icon(Icons.edit),
                             onPressed: () {
                               _showEditDialog(index);
@@ -135,6 +169,24 @@ class _GroupHikingExpeditionPlanningScreenState
         ),
       ),
     );
+  }
+
+  void _shareHikingEvent(HikingEvent hikingEvent) {
+    String shareText =
+        'Join us for a hiking event!\n\nTrail: ${hikingEvent.trailName}\nDate and Time: ${hikingEvent.dateTime.toString()}\nMax Participants: ${hikingEvent.maxParticipants}\nDescription: ${hikingEvent.description}';
+
+    Share.share(shareText, subject: 'Hiking Event Details');
+  }
+
+  void _shareLink(HikingEvent hikingEvent) async {
+    String link =
+        'https://.com/hiking_event/${hikingEvent.id}'; // Replace with your app's deep link
+
+    if (await canLaunch(link)) {
+      await launch(link);
+    } else {
+      throw 'Could not launch $link';
+    }
   }
 
   void _showEditDialog(int index) async {
@@ -223,14 +275,14 @@ class _GroupHikingExpeditionPlanningScreenState
 }
 
 class HikingEvent {
-  // int id;
+  int id;
   String trailName;
   DateTime dateTime;
   int maxParticipants;
   String description;
 
   HikingEvent({
-    // required this.id,
+    required this.id,
     required this.trailName,
     required this.dateTime,
     required this.maxParticipants,

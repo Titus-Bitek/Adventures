@@ -8,10 +8,13 @@ import 'package:helloworld/homepage.dart';
 import 'package:helloworld/TrailDetailsScreen.dart';
 import 'package:helloworld/FamilyFriendlyTrailSelectionScreen.dart';
 import 'package:helloworld/GroupHikingExpeditionPlanningScreen.dart';
+import 'find_adventure.dart';
+import 'more_route_screen.dart';
+import 'admin.dart';
 
-void main() {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp(
+Future main() async {
+ WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   //   options: DefaultFirebaseOptions.currentPlatform,
   // );
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -31,8 +34,9 @@ class MyApp extends StatelessWidget {
       ),
       home: IntroPage(),
       routes: {
+        '/adminPanel': (context) => AdminPanelScreen(),
         '/trailDetails': (context) => TrailDetailsScreen(
-              trailName: 'Create Trail',
+              trailName: 'Choose Trail',
               difficultyLevel: 'Moderate',
               distance: 10.5,
               elevationProfile: 'Some ups and downs',
@@ -57,9 +61,8 @@ class MyApp extends StatelessWidget {
               dateTime: DateTime.now(),
               maxParticipants: 10,
             ),
-        '/photography': (context) => FamilyFriendlyTrailSelectionScreen(
-              familyFriendlyTrails: dummyPhotography,
-            ),
+        '/adventure': (context) => Adventure(),
+        '/moreRoutes': (context) => PhotographyPage(),
       },
     );
   }
