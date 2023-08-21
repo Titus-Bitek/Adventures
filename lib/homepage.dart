@@ -389,6 +389,18 @@ final List<Map<String, dynamic>> dummyTrendingPlaces = [
     'imageUrl': '',
     'showFirstImage': true,
   },
+  {
+    'name': 'Waterfall',
+    'image': 'Assets/hikings 1.7.jpeg',
+    'imageUrl': '',
+    'showFirstImage': true,
+  },
+  {
+    'name': 'Slow Mountain',
+    'image': 'Assets/hikings 1.8.jpeg',
+    'imageUrl': '',
+    'showFirstImage': true,
+  },
   // Add more trending places here
 ];
 
@@ -473,6 +485,24 @@ final List<Map<String, dynamic>> dummyAccommodationPlaces = [
   {
     'name': 'Group Trail',
     'image': 'Assets/rest7.jpg',
+    'imageUrl': '',
+    'showFirstImage': true,
+  },
+  {
+    'name': 'Couple Camp Site',
+    'image': 'Assets/hikings couple.jpeg',
+    'imageUrl': '',
+    'showFirstImage': true,
+  },
+  {
+    'name': 'Family Camp Site',
+    'image': 'Assets/hikings family.jpeg',
+    'imageUrl': '',
+    'showFirstImage': true,
+  },
+  {
+    'name': 'Bunyonyi Resort',
+    'image': 'Assets/hikings bunyonyi.jpeg',
     'imageUrl': '',
     'showFirstImage': true,
   },
@@ -611,6 +641,24 @@ final List<Map<String, dynamic>> dummyHikingPlaces = [
   {
     'name': 'Group Trail',
     'image': 'Assets/g.jpg',
+    'imageUrl': '',
+    'showFirstImage': true,
+  },
+  {
+    'name': 'Crane',
+    'image': 'Assets/hikings crane.jpeg',
+    'imageUrl': '',
+    'showFirstImage': true,
+  },
+  {
+    'name': 'Zoo',
+    'image': 'Assets/hikings zoo.jpeg',
+    'imageUrl': '',
+    'showFirstImage': true,
+  },
+  {
+    'name': 'Flamingos',
+    'image': 'Assets/hikings flamingos.jpeg',
     'imageUrl': '',
     'showFirstImage': true,
   },
