@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:helloworld/intropage.dart';
-import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_core/firebase_core.dart';
 // import 'package:firebase_options.dart';
 import 'package:helloworld/homepage.dart';
 import 'package:helloworld/TrailDetailsScreen.dart';
@@ -12,7 +12,7 @@ import 'more_route_screen.dart';
 import 'admin.dart';
 
 Future main() async {
- WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   //   options: DefaultFirebaseOptions.currentPlatform,
   // );

@@ -672,7 +672,12 @@ final List<Map<String, dynamic>> dummyFamilyFriendlyTrails = [
     'difficulty': 'Easy',
     'distance': 5.0,
     'elevation': 'Flat',
-    'photos': ['Assets/7.jpg', 'Assets/3.jpg', 'Assets/2.jpg', 'Assets/1.jpg'],
+    'photos': [
+      'Assets/2.1.jpeg',
+      'Assets/2.2.jpeg',
+      'Assets/2.3.jpeg',
+      'Assets/2.4.jpeg'
+    ],
   },
   {
     'name': 'Family Trail B',
@@ -681,7 +686,12 @@ final List<Map<String, dynamic>> dummyFamilyFriendlyTrails = [
     'difficulty': 'Moderate',
     'distance': 8.0,
     'elevation': 'Some hills',
-    'photos': ['Assets/1.jpg', 'Assets/1.jpg', 'Assets/1.jpg', 'Assets/1.jpg'],
+    'photos': [
+      'Assets/2.5.jpeg',
+      'Assets/7.jpg',
+      'Assets/6.jpg',
+      'Assets/1.jpg'
+    ],
   },
 ];
 final List<Map<String, dynamic>> dummyPhotography = [
@@ -691,7 +701,12 @@ final List<Map<String, dynamic>> dummyPhotography = [
     'difficulty': 'Easy',
     'distance': 5.0,
     'elevation': 'Flat',
-    'photos': ['Assets/7.jpg', 'Assets/3.jpg', 'Assets/2.jpg', 'Assets/1.jpg'],
+    'photos': [
+      'Assets/fire.jpg',
+      'Assets/3.jpg',
+      'Assets/2.jpg',
+      'Assets/1.jpg'
+    ],
   },
   {
     'name': 'Family Trail B',
@@ -700,6 +715,11 @@ final List<Map<String, dynamic>> dummyPhotography = [
     'difficulty': 'Moderate',
     'distance': 8.0,
     'elevation': 'Some hills',
-    'photos': ['Assets/1.jpg', 'Assets/1.jpg', 'Assets/1.jpg', 'Assets/1.jpg'],
+    'photos': [
+      'Assets/ hikings 2.5.jpeg',
+      'Assets/hikings 2.4.jpeg',
+      'Assets/hikings 1.1.3.jpeg',
+      'Assets/outdoor.jpg'
+    ],
   },
 ];

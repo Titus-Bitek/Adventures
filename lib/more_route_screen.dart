@@ -107,7 +107,7 @@
 //   }
 // }
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+//import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 // import 'package:http/http.dart' as http;
 // import 'dart:convert';
@@ -214,6 +214,11 @@ class _PhotographyPageState extends State<PhotographyPage> {
     'assets/hiking_photo_1.jpg',
     'assets/hiking_photo_2.jpg',
     'assets/hiking_photo_3.jpg',
+    'assets/hikings_phot 2.5.jpeg',
+    'assets/hikings_photo 2.4.jpeg',
+    'assets/hikings 1.1.3.jpeg',
+    'assets/hiking_photo outdoor.jpg',
+    'assets/hiking_photo_fire.jpg',
     // Add more sample photo paths here or load photos dynamically from the server.
   ];
   File? _imageFile;

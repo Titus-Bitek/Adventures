@@ -25,7 +25,7 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
               Column(
                 children: [
                   Text(
-                    'Welcome, Admin!',
+                    ' With Great Honor Welcome, Admin!',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 20),

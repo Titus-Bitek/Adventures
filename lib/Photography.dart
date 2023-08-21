@@ -106,6 +106,11 @@ class _PhotographyPageState extends State<PhotographyPage> {
     'assets/hiking_photo_1.jpg',
     'assets/hiking_photo_2.jpg',
     'assets/hiking_photo_3.jpg',
+    'assets/hikings 2.5.jpeg',
+    'assets/hikings 2.4.jpeg',
+    'assets/hikings 1.1.3.jpeg',
+    'assets/hiking_photo_outdoor.jpg',
+    'assets/hiking_photo_fire.jpg'
     // Add more sample photo paths here or load photos dynamically from the server.
   ];
   File? _imageFile;
