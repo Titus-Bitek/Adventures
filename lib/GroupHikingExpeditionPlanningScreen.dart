@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter_material_pickers/flutter_material_pickers.dart';
-import 'package:share/share.dart';
-import 'package:url_launcher/url_launcher.dart';
+//import 'package:share/share.dart';
+//import 'package:url_launcher/url_launcher.dart';
 
 class GroupHikingExpeditionPlanningScreen extends StatefulWidget {
   final String trailName;
