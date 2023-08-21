@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:helloworld/homepage.dart';
 import 'package:helloworld/login_page.dart';
 
 class IntroPage extends StatefulWidget {
@@ -78,7 +77,7 @@ class _IntroPageState extends State<IntroPage> {
                               //   ),
                               // ),
                               style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
+                                backgroundColor: Colors.white,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20),
                                 ),

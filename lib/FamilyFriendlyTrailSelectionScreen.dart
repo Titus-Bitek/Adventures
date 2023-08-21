@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:helloworld/TrailDetailsScreen.dart';
-import 'package:helloworld/RatingsAndRecommendationsScreen.dart';
-import 'package:helloworld/Photography.dart';
-import 'package:helloworld/explore.dart';
 
 class FamilyFriendlyTrailSelectionScreen extends StatelessWidget {
   final List<Map<String, dynamic>> familyFriendlyTrails;

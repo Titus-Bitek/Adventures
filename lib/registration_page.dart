@@ -170,7 +170,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                     state.errorText ?? '',
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
-                                      color: Theme.of(context).errorColor,
+                                      color: Theme.of(context).colorScheme.error,
                                       fontSize: 12,
                                     ),
                                   ),

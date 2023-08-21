@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 import 'package:latlong2/latlong.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';

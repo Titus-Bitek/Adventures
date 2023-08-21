@@ -1,11 +1,9 @@
 //import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:helloworld/intropage.dart';
 import 'package:helloworld/theme_helper.dart';
 import 'package:helloworld/homepage.dart';
 import 'forgot_password_page.dart';
-import 'profile_page.dart';
 import 'registration_page.dart';
 import 'header_widget.dart';
 

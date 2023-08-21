@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:helloworld/intropage.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:helloworld/login_page.dart';
 // import 'package:firebase_options.dart';
 import 'package:helloworld/homepage.dart';
 import 'package:helloworld/TrailDetailsScreen.dart';

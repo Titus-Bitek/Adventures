@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'DetailsScreen.dart';
 // import 'package:helloworld/TrailDetailsScreen.dart';
 // import 'package:helloworld/FamilyFriendlyTrailSelectionScreen.dart';
 // import 'package:helloworld/GroupHikingExpeditionPlanningScreen.dart';
